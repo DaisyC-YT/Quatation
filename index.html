@@ -3,13 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QUOTE_SYS // 網站建置報價</title>
+    <title>D-SY Project // 網站建置報價</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen:wght@400;700&family=Noto+Sans+TC:wght@300;400&display=swap"
       rel="stylesheet"
     />
+
     <style>
+      /* ══════════════════════════════════════
+   A4 PAGE SETUP — 最優先設定
+══════════════════════════════════════ */
+      @page {
+        size: A4 portrait;
+        margin: 12mm 14mm 12mm 14mm;
+      }
+
+      /* ══════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════ */
       :root {
         --bg: #080c10;
         --panel: #0a1520;
@@ -22,10 +34,11 @@
         --magenta: #ff2d9b;
         --amber: #ffb800;
         --grid: rgba(0, 245, 255, 0.03);
-        --p1c: #00f5ff; /* 基礎款 accent */
-        --p2c: #b8ff00; /* 標準款 accent */
       }
 
+      /* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
       * {
         margin: 0;
         padding: 0;
@@ -35,6 +48,9 @@
         scroll-behavior: smooth;
       }
 
+      /* ══════════════════════════════════════
+   SCREEN BASE
+══════════════════════════════════════ */
       body {
         background: var(--bg);
         color: var(--white);
@@ -46,6 +62,7 @@
         cursor: crosshair;
       }
 
+      /* grid bg */
       body::before {
         content: "";
         position: fixed;
@@ -56,6 +73,7 @@
         pointer-events: none;
         z-index: 0;
       }
+      /* scanlines */
       body::after {
         content: "";
         position: fixed;
@@ -64,16 +82,18 @@
           0deg,
           transparent,
           transparent 2px,
-          rgba(0, 0, 0, 0.13) 2px,
-          rgba(0, 0, 0, 0.13) 4px
+          rgba(0, 0, 0, 0.12) 2px,
+          rgba(0, 0, 0, 0.12) 4px
         );
         pointer-events: none;
         z-index: 999;
       }
 
-      /* ── 容器 ── */
+      /* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
       .terminal {
-        max-width: 980px;
+        max-width: 960px;
         margin: 0 auto;
         padding: 24px 20px 60px;
         position: relative;
@@ -147,6 +167,8 @@
           var(--lime)
         );
       }
+
+      /* loading bar */
       .load-bar {
         height: 2px;
         background: var(--border);
@@ -179,20 +201,20 @@
 
       /* ── Header ── */
       .hdr {
-        padding: 44px 48px 32px;
+        padding: 40px 44px 28px;
         border-bottom: 1px solid var(--border);
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 32px;
+        gap: 28px;
         align-items: end;
         position: relative;
       }
       .hdr-ghost {
         position: absolute;
-        right: 40px;
-        top: 16px;
+        right: 36px;
+        top: 14px;
         font-family: "Press Start 2P", monospace;
-        font-size: 80px;
+        font-size: 72px;
         color: rgba(0, 245, 255, 0.03);
         user-select: none;
         pointer-events: none;
@@ -204,14 +226,13 @@
         color: var(--magenta);
         letter-spacing: 0.25em;
         text-transform: uppercase;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 8px;
       }
       .studio-tag::before {
         content: "▶";
-        color: var(--magenta);
         font-size: 8px;
         animation: blink 1s step-end infinite;
       }
@@ -226,9 +247,9 @@
       }
       .studio-name {
         font-family: "Press Start 2P", monospace;
-        font-size: 18px;
+        font-size: 17px;
         color: var(--white);
-        line-height: 1.7;
+        line-height: 1.8;
         letter-spacing: 0.05em;
       }
       .studio-name span {
@@ -239,7 +260,7 @@
         text-align: right;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 7px;
       }
       .doc-row {
         display: flex;
@@ -264,18 +285,18 @@
 
       /* ── Hero ── */
       .hero {
-        padding: 48px 48px 40px;
+        padding: 40px 44px 36px;
         border-bottom: 1px solid var(--border);
       }
       .eyebrow {
         font-family: "Silkscreen", monospace;
         font-size: 10px;
         color: var(--dim);
-        letter-spacing: 0.25em;
+        letter-spacing: 0.2em;
         display: flex;
         align-items: center;
         gap: 12px;
-        margin-bottom: 22px;
+        margin-bottom: 20px;
       }
       .eyebrow::after {
         content: "";
@@ -285,10 +306,10 @@
       }
       .hero h1 {
         font-family: "Press Start 2P", monospace;
-        font-size: clamp(12px, 2.2vw, 20px);
+        font-size: clamp(12px, 2vw, 19px);
         line-height: 2.1;
         letter-spacing: 0.04em;
-        margin-bottom: 22px;
+        margin-bottom: 20px;
       }
       .c {
         color: var(--cyan);
@@ -304,18 +325,18 @@
       }
       .hero-desc {
         font-family: "Noto Sans TC", sans-serif;
-        font-size: 13.5px;
+        font-size: 13px;
         color: var(--muted);
         font-weight: 300;
         line-height: 2;
-        max-width: 580px;
+        max-width: 560px;
         border-left: 2px solid var(--border);
-        padding-left: 20px;
+        padding-left: 18px;
       }
 
-      /* ── Section wrapper ── */
+      /* ── Section ── */
       .sec {
-        padding: 44px 48px;
+        padding: 36px 44px;
         border-bottom: 1px solid var(--border);
       }
       .sec-label {
@@ -326,7 +347,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        margin-bottom: 32px;
+        margin-bottom: 28px;
       }
       .sec-label .n {
         font-family: "Press Start 2P", monospace;
@@ -345,17 +366,15 @@
         background: var(--border);
       }
 
-      /* ── 方案卡片（僅2個） ── */
+      /* ── Plans ── */
       .plans {
         display: grid;
         gap: 3px;
       }
-
       .plan {
         border: 1px solid var(--border);
         position: relative;
         overflow: hidden;
-        transition: border-color 0.2s;
       }
       .plan::before {
         content: "";
@@ -379,23 +398,22 @@
       }
 
       .plan-inner {
-        padding: 32px 36px;
+        padding: 28px 32px;
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 32px;
+        gap: 28px;
         align-items: start;
       }
-
       .plan-header {
         display: flex;
         align-items: center;
-        gap: 14px;
-        margin-bottom: 16px;
+        gap: 12px;
+        margin-bottom: 14px;
       }
       .plan-id {
         font-family: "Press Start 2P", monospace;
         font-size: 8px;
-        padding: 6px 10px;
+        padding: 5px 9px;
         border: 1px solid var(--border);
         color: var(--dim);
         white-space: nowrap;
@@ -410,19 +428,17 @@
         color: var(--lime);
         background: rgba(184, 255, 0, 0.05);
       }
-
       .plan-badge {
         font-family: "Silkscreen", monospace;
         font-size: 10px;
-        padding: 3px 10px;
+        padding: 3px 9px;
         background: var(--lime);
         color: var(--bg);
         letter-spacing: 0.1em;
       }
-
       .plan-name {
         font-family: "Press Start 2P", monospace;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1.7;
         margin-bottom: 6px;
       }
@@ -434,29 +450,27 @@
         color: var(--lime);
         text-shadow: 0 0 18px rgba(184, 255, 0, 0.4);
       }
-
       .plan-sub {
         font-family: "Noto Sans TC", sans-serif;
         font-size: 12px;
         color: var(--muted);
         font-weight: 300;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         line-height: 1.9;
       }
-
       .plan-feats {
         list-style: none;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 6px 24px;
+        gap: 5px 20px;
       }
       .plan-feats li {
         font-family: "VT323", monospace;
-        font-size: 17px;
+        font-size: 16px;
         color: var(--white);
         display: flex;
         align-items: baseline;
-        gap: 8px;
+        gap: 7px;
         line-height: 1.5;
       }
       .plan-feats li::before {
@@ -472,12 +486,11 @@
         color: var(--lime);
       }
 
-      /* 右側價格 */
       .price-col {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        min-width: 150px;
+        min-width: 140px;
       }
       .price-lbl {
         font-family: "Silkscreen", monospace;
@@ -488,7 +501,7 @@
       }
       .price-num {
         font-family: "Press Start 2P", monospace;
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1.2;
         text-align: right;
       }
@@ -515,8 +528,8 @@
         text-align: right;
       }
       .timeline-box {
-        margin-top: 16px;
-        padding: 8px 12px;
+        margin-top: 14px;
+        padding: 7px 10px;
         border: 1px solid var(--border);
         text-align: center;
         font-family: "Silkscreen", monospace;
@@ -531,20 +544,20 @@
         border-color: rgba(184, 255, 0, 0.2);
       }
 
-      /* ── 功能對照 ── */
+      /* ── Compare table ── */
       .cmp-wrap {
         overflow-x: auto;
       }
       table.cmp {
         width: 100%;
         border-collapse: collapse;
-        min-width: 520px;
+        min-width: 480px;
       }
       table.cmp thead th {
         font-family: "Press Start 2P", monospace;
         font-size: 7px;
         letter-spacing: 0.08em;
-        padding: 12px 16px;
+        padding: 11px 14px;
         border-bottom: 1px solid var(--border);
         font-weight: 400;
         background: rgba(0, 0, 0, 0.3);
@@ -563,13 +576,12 @@
       table.cmp thead th.tl {
         color: var(--lime);
       }
-
       table.cmp tbody tr.grp td {
         font-family: "Silkscreen", monospace;
         font-size: 10px;
         letter-spacing: 0.2em;
         color: var(--magenta);
-        padding: 16px 16px 6px;
+        padding: 14px 14px 5px;
         background: transparent !important;
         border-bottom: 1px solid rgba(255, 45, 155, 0.15);
       }
@@ -577,9 +589,9 @@
         background: rgba(255, 255, 255, 0.015);
       }
       table.cmp tbody td {
-        padding: 9px 16px;
+        padding: 8px 14px;
         font-family: "VT323", monospace;
-        font-size: 17px;
+        font-size: 16px;
         color: var(--white);
         vertical-align: middle;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
@@ -603,30 +615,21 @@
         font-size: 10px;
       }
 
-      /* ══════════════════════════════════
-   ── 流程圖（核心新增）──
-══════════════════════════════════ */
+      /* ══════════════════════════════════════
+   WORKFLOW PHASES
+══════════════════════════════════════ */
       .flow-section {
-        padding: 44px 48px;
+        padding: 36px 44px;
         border-bottom: 1px solid var(--border);
       }
 
-      /* 橫向連線容器 */
-      .flow-track {
-        position: relative;
-        margin-bottom: 4px;
-      }
-
-      /* 各 Phase 卡 */
       .phase-row {
         display: grid;
-        grid-template-columns: 90px 1fr;
+        grid-template-columns: 72px 1fr;
         gap: 0;
         margin-bottom: 3px;
         position: relative;
       }
-
-      /* 左側：Phase 編號 + 連接線 */
       .phase-spine {
         display: flex;
         flex-direction: column;
@@ -634,8 +637,8 @@
         position: relative;
       }
       .phase-node {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         border: 2px solid var(--border);
         display: flex;
         align-items: center;
@@ -645,29 +648,23 @@
         position: relative;
         z-index: 2;
         flex-shrink: 0;
-        transition: border-color 0.2s;
       }
-      .phase-row:hover .phase-node {
-        border-color: var(--cyan);
-      }
-
       .phase-line {
         width: 2px;
         flex: 1;
         background: repeating-linear-gradient(
           180deg,
-          var(--border) 0px,
+          var(--border) 0,
           var(--border) 6px,
           transparent 6px,
           transparent 12px
         );
-        min-height: 16px;
+        min-height: 14px;
       }
       .phase-row:last-child .phase-line {
         display: none;
       }
 
-      /* Phase 編號顏色 */
       .ph1 .phase-node {
         border-color: rgba(0, 245, 255, 0.4);
         color: var(--cyan);
@@ -697,19 +694,17 @@
         color: var(--magenta);
       }
 
-      /* 右側：內容卡 */
       .phase-card {
         border: 1px solid var(--border);
-        padding: 20px 28px 20px 24px;
-        margin-left: 16px;
+        padding: 18px 24px 18px 22px;
+        margin-left: 14px;
         position: relative;
-        transition: border-color 0.15s, background 0.15s;
       }
       .phase-card::before {
         content: "";
         position: absolute;
         left: -8px;
-        top: 18px;
+        top: 17px;
         width: 8px;
         height: 2px;
       }
@@ -735,58 +730,46 @@
         background: rgba(255, 45, 155, 0.4);
       }
 
-      .phase-row:hover .phase-card {
-        background: rgba(255, 255, 255, 0.02);
-        border-color: rgba(0, 245, 255, 0.2);
-      }
-
       .phase-header {
         display: flex;
         align-items: baseline;
-        gap: 14px;
-        margin-bottom: 10px;
+        gap: 12px;
+        margin-bottom: 8px;
       }
       .phase-tag {
         font-family: "Silkscreen", monospace;
         font-size: 9px;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        padding: 2px 8px;
+        padding: 2px 7px;
         border: 1px solid currentColor;
       }
       .ph1 .phase-tag {
         color: var(--cyan);
-        border-color: rgba(0, 245, 255, 0.3);
         background: rgba(0, 245, 255, 0.05);
       }
       .ph2 .phase-tag {
         color: var(--lime);
-        border-color: rgba(184, 255, 0, 0.3);
         background: rgba(184, 255, 0, 0.05);
       }
       .ph3 .phase-tag {
         color: var(--magenta);
-        border-color: rgba(255, 45, 155, 0.3);
         background: rgba(255, 45, 155, 0.05);
       }
       .ph4 .phase-tag {
         color: var(--amber);
-        border-color: rgba(255, 184, 0, 0.3);
         background: rgba(255, 184, 0, 0.05);
       }
       .ph5 .phase-tag {
         color: var(--cyan);
-        border-color: rgba(0, 245, 255, 0.3);
         background: rgba(0, 245, 255, 0.05);
       }
       .ph6 .phase-tag {
         color: var(--lime);
-        border-color: rgba(184, 255, 0, 0.3);
         background: rgba(184, 255, 0, 0.05);
       }
       .ph7 .phase-tag {
         color: var(--magenta);
-        border-color: rgba(255, 45, 155, 0.3);
         background: rgba(255, 45, 155, 0.05);
       }
 
@@ -794,36 +777,33 @@
         font-family: "Silkscreen", monospace;
         font-size: 10px;
         color: var(--dim);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.07em;
       }
-
       .phase-title {
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
-        line-height: 1.8;
-        margin-bottom: 10px;
+        font-size: 9px;
+        line-height: 1.9;
+        margin-bottom: 8px;
         color: var(--white);
       }
-
       .phase-desc {
         font-family: "Noto Sans TC", sans-serif;
-        font-size: 13px;
+        font-size: 12.5px;
         color: var(--muted);
         font-weight: 300;
-        line-height: 2;
-        margin-bottom: 12px;
+        line-height: 1.9;
+        margin-bottom: 8px;
       }
 
-      /* 細項清單（Phase 4 的 SEO 清單） */
       .phase-list {
         list-style: none;
         display: grid;
         gap: 5px;
-        margin-top: 10px;
+        margin-top: 8px;
       }
       .phase-list li {
         font-family: "VT323", monospace;
-        font-size: 16px;
+        font-size: 15px;
         color: var(--muted);
         display: flex;
         align-items: baseline;
@@ -840,25 +820,22 @@
       .ph4 .phase-list li::before {
         color: var(--amber);
       }
-
       .phase-list code {
         font-family: "Silkscreen", monospace;
-        font-size: 11px;
+        font-size: 10px;
         background: rgba(255, 255, 255, 0.05);
-        padding: 1px 6px;
+        padding: 1px 5px;
         border: 1px solid var(--border);
         color: var(--lime);
       }
-
-      /* Phase 7 特殊：完成標誌 */
       .done-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         font-family: "Press Start 2P", monospace;
-        font-size: 8px;
+        font-size: 7px;
         color: var(--lime);
-        padding: 8px 16px;
+        padding: 7px 14px;
         border: 2px solid var(--lime);
         background: rgba(184, 255, 0, 0.05);
         text-shadow: 0 0 12px rgba(184, 255, 0, 0.5);
@@ -866,16 +843,16 @@
         margin-top: 8px;
       }
 
-      /* ── 時間軸摘要條 ── */
-      .timeline-summary {
-        margin-top: 36px;
+      /* 時間軸摘要 */
+      .tl-summary {
+        margin-top: 28px;
         background: rgba(0, 0, 0, 0.4);
         border: 1px solid var(--border);
         border-left: 3px solid var(--cyan);
-        padding: 20px 28px;
+        padding: 16px 24px;
         display: flex;
         align-items: center;
-        gap: 32px;
+        gap: 28px;
         flex-wrap: wrap;
       }
       .tl-item {
@@ -887,32 +864,32 @@
         font-family: "Silkscreen", monospace;
         font-size: 9px;
         color: var(--dim);
-        letter-spacing: 0.2em;
+        letter-spacing: 0.18em;
       }
       .tl-val {
         font-family: "Press Start 2P", monospace;
-        font-size: 11px;
+        font-size: 10px;
         color: var(--cyan);
       }
-      .tl-divider {
+      .tl-div {
         width: 1px;
         align-self: stretch;
         background: var(--border);
       }
 
-      /* ── 備註 ── */
+      /* ── Notes ── */
       .notes-box {
         background: rgba(0, 0, 0, 0.4);
         border: 1px solid var(--border);
         border-left: 3px solid var(--amber);
-        padding: 24px 28px;
+        padding: 22px 26px;
       }
       .notes-head {
         font-family: "Press Start 2P", monospace;
         font-size: 8px;
         color: var(--amber);
         letter-spacing: 0.2em;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -924,11 +901,11 @@
       .notes-list {
         list-style: none;
         display: grid;
-        gap: 10px;
+        gap: 9px;
       }
       .notes-list li {
         font-family: "VT323", monospace;
-        font-size: 17px;
+        font-size: 16px;
         color: var(--muted);
         display: flex;
         gap: 10px;
@@ -946,18 +923,18 @@
 
       /* ── Footer ── */
       .footer {
-        padding: 28px 48px;
+        padding: 24px 44px;
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-        gap: 24px;
+        gap: 20px;
       }
       .f-brand {
         font-family: "Press Start 2P", monospace;
         font-size: 11px;
         color: var(--white);
         letter-spacing: 0.1em;
-        margin-bottom: 8px;
+        margin-bottom: 7px;
       }
       .f-sub {
         font-family: "Silkscreen", monospace;
@@ -975,17 +952,16 @@
         font-family: "Silkscreen", monospace;
         font-size: 11px;
         color: var(--dim);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.07em;
       }
       .f-contact span.hi {
         color: var(--cyan);
       }
-
       .status {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 48px;
+        padding: 8px 44px;
         background: rgba(0, 0, 0, 0.5);
         border-top: 1px solid var(--border);
       }
@@ -1027,7 +1003,7 @@
         letter-spacing: 0.1em;
       }
 
-      /* ── 按鈕 ── */
+      /* ── 列印按鈕 ── */
       .action-bar {
         display: flex;
         gap: 12px;
@@ -1071,37 +1047,346 @@
         color: var(--lime);
       }
 
-      /* ── 列印 ── */
+      /* ══════════════════════════════════════
+   ██████  PRINT STYLES  ██████
+   列印 / PDF 輸出專屬規則
+══════════════════════════════════════ */
       @media print {
-        body {
-          background: #fff;
-          color: #111;
-          cursor: default;
+        /* 保留彩色背景 */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
         }
+
+        /* 移除螢幕裝飾 */
         body::before,
         body::after {
-          display: none;
+          display: none !important;
         }
         .action-bar {
-          display: none;
+          display: none !important;
         }
         .load-bar {
+          display: none !important;
+        }
+        .pulse {
+          animation: none !important;
+        }
+        .studio-tag::before {
+          animation: none !important;
+        }
+
+        /* 根節點：恢復可捲動流程 */
+        html,
+        body {
+          width: 100% !important;
+          height: auto !important;
+          overflow: visible !important;
+          background: var(--bg) !important;
+          font-size: 16px;
+          cursor: default;
+        }
+
+        /* 容器填滿頁面寬度 */
+        .terminal {
+          max-width: 100% !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+
+        /* 系統列 */
+        .sys-bar {
+          padding: 6px 12px !important;
+        }
+        .sys-title {
+          font-size: 7px !important;
+        }
+        .sys-clock {
+          font-size: 10px !important;
+        }
+
+        /* 主板 */
+        .board {
+          border: 1px solid var(--border) !important;
+          overflow: visible !important;
+        }
+
+        /* ── Header ── */
+        .hdr {
+          padding: 24px 28px 20px !important;
+          grid-template-columns: 1fr auto !important;
+          gap: 20px !important;
+          page-break-inside: avoid;
+        }
+        .hdr-ghost {
           display: none;
         }
-        :root {
-          --bg: #fff;
-          --panel: #f8f8f8;
-          --border: #ddd;
-          --dim: #666;
-          --muted: #555;
-          --white: #111;
-          --cyan: #006699;
-          --lime: #446600;
-          --magenta: #990055;
-          --amber: #775500;
+        .studio-name {
+          font-size: 14px !important;
+          line-height: 1.7 !important;
+        }
+        .studio-tag {
+          font-size: 9px !important;
+        }
+        .doc-key {
+          font-size: 8px !important;
+        }
+        .doc-val {
+          font-size: 10px !important;
+          padding: 1px 6px !important;
+        }
+
+        /* ── Hero ── */
+        .hero {
+          padding: 24px 28px 20px !important;
+        }
+        .hero h1 {
+          font-size: 14px !important;
+          line-height: 2 !important;
+          margin-bottom: 14px !important;
+        }
+        .hero-desc {
+          font-size: 11.5px !important;
+          line-height: 1.8 !important;
+        }
+        .eyebrow {
+          font-size: 9px !important;
+          margin-bottom: 16px !important;
+        }
+
+        /* ── Section 間距 ── */
+        .sec {
+          padding: 22px 28px !important;
+        }
+        .flow-section {
+          padding: 22px 28px !important;
+        }
+        .sec-label {
+          margin-bottom: 18px !important;
+          font-size: 9px !important;
+        }
+        .sec-label .n {
+          font-size: 7px !important;
+        }
+
+        /* ── Plans ── */
+        .plans {
+          gap: 2px !important;
+        }
+
+        .plan-inner {
+          padding: 20px 24px !important;
+          grid-template-columns: 1fr auto !important;
+          gap: 20px !important;
+        }
+        .plan-header {
+          margin-bottom: 10px !important;
+        }
+        .plan-id {
+          font-size: 7px !important;
+          padding: 4px 8px !important;
+        }
+        .plan-badge {
+          font-size: 9px !important;
+          padding: 2px 7px !important;
+        }
+        .plan-name {
+          font-size: 12px !important;
+          margin-bottom: 5px !important;
+          line-height: 1.6 !important;
+        }
+        .plan-sub {
+          font-size: 11px !important;
+          margin-bottom: 14px !important;
+          line-height: 1.7 !important;
+        }
+
+        .plan-feats {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 4px 16px !important;
+        }
+        .plan-feats li {
+          font-size: 14px !important;
+        }
+        .plan-feats li::before {
+          font-size: 9px !important;
+        }
+
+        .price-col {
+          min-width: 120px !important;
+        }
+        .price-lbl {
+          font-size: 8px !important;
+        }
+        .price-num {
+          font-size: 17px !important;
+        }
+        .price-curr {
+          font-size: 9px !important;
+        }
+        .price-range {
+          font-size: 9px !important;
+        }
+        .timeline-box {
+          padding: 5px 8px !important;
+          font-size: 9px !important;
+          margin-top: 10px !important;
+        }
+
+        /* ── Compare table ── */
+        table.cmp thead th {
+          font-size: 6.5px !important;
+          padding: 9px 11px !important;
+        }
+        table.cmp tbody td {
+          padding: 7px 11px !important;
+          font-size: 14px !important;
+        }
+        table.cmp tbody tr.grp td {
+          font-size: 9px !important;
+          padding: 12px 11px 4px !important;
+        }
+        table.cmp tbody td:not(:first-child) {
+          font-size: 10px !important;
+        }
+
+        /* ── Phase 流程 ── */
+        .phase-row {
+          grid-template-columns: 58px 1fr !important;
+          margin-bottom: 2px !important;
+          page-break-inside: avoid;
+        }
+        .phase-node {
+          width: 34px !important;
+          height: 34px !important;
+          font-size: 7px !important;
+        }
+        .phase-card {
+          padding: 14px 18px 14px 18px !important;
+          margin-left: 10px !important;
+        }
+        .phase-header {
+          gap: 10px !important;
+          margin-bottom: 6px !important;
+        }
+        .phase-tag {
+          font-size: 8px !important;
+          padding: 2px 6px !important;
+        }
+        .phase-duration {
+          font-size: 9px !important;
+        }
+        .phase-title {
+          font-size: 8px !important;
+          line-height: 1.8 !important;
+          margin-bottom: 6px !important;
+        }
+        .phase-desc {
+          font-size: 11.5px !important;
+          line-height: 1.8 !important;
+          margin-bottom: 6px !important;
+        }
+        .phase-list {
+          gap: 4px !important;
+          margin-top: 6px !important;
+        }
+        .phase-list li {
+          font-size: 13px !important;
+        }
+        .phase-list li::before {
+          font-size: 8px !important;
+        }
+        .phase-list code {
+          font-size: 9px !important;
+        }
+        .done-badge {
+          font-size: 6.5px !important;
+          padding: 6px 12px !important;
+        }
+
+        /* 時間軸摘要 */
+        .tl-summary {
+          margin-top: 18px !important;
+          padding: 12px 18px !important;
+          gap: 20px !important;
+        }
+        .tl-label {
+          font-size: 8px !important;
+        }
+        .tl-val {
+          font-size: 9px !important;
+        }
+
+        /* ── Notes ── */
+        .notes-box {
+          padding: 18px 22px !important;
+        }
+        .notes-head {
+          font-size: 7px !important;
+          margin-bottom: 12px !important;
+        }
+        .notes-list li {
+          font-size: 14px !important;
+          line-height: 1.5 !important;
+        }
+        .notes-list li::before {
+          font-size: 8px !important;
+        }
+
+        /* ── Footer ── */
+        .footer {
+          padding: 18px 28px !important;
+          page-break-inside: avoid;
+        }
+        .f-brand {
+          font-size: 10px !important;
+        }
+        .f-sub {
+          font-size: 9px !important;
+        }
+        .f-contact span {
+          font-size: 10px !important;
+        }
+
+        .status {
+          padding: 6px 28px !important;
+          page-break-inside: avoid;
+        }
+        .st-item {
+          font-size: 8px !important;
+        }
+        .st-right {
+          font-size: 8px !important;
+        }
+
+        /* ── 分頁控制 ── */
+        /* 方案區 → 不跨頁切斷 */
+        .plan {
+          page-break-inside: avoid;
+        }
+        /* Phase 4（最長的卡）→ 允許在卡片內換頁但保留卡頭 */
+        .phase-card {
+          page-break-inside: avoid;
+        }
+        /* 重要區塊前換頁 */
+        .flow-section {
+          page-break-before: auto;
+        }
+        /* 備註區前換頁 */
+        .sec:last-of-type {
+          page-break-before: auto;
+        }
+
+        /* 確保 .board 內容流動而非截斷 */
+        .board {
+          overflow: visible !important;
+        }
+        .cmp-wrap {
+          overflow: visible !important;
         }
       }
 
+      /* ── Responsive ── */
       @media (max-width: 640px) {
         .hdr {
           grid-template-columns: 1fr;
@@ -1119,7 +1404,7 @@
           grid-template-columns: 1fr;
         }
         .phase-row {
-          grid-template-columns: 60px 1fr;
+          grid-template-columns: 56px 1fr;
         }
         .footer {
           flex-direction: column;
@@ -1134,28 +1419,28 @@
           font-size: 13px;
         }
         .sec {
-          padding: 32px 20px;
-        }
-        .hdr {
-          padding: 32px 20px 24px;
-        }
-        .hero {
-          padding: 32px 20px;
+          padding: 28px 18px;
         }
         .flow-section {
-          padding: 32px 20px;
+          padding: 28px 18px;
+        }
+        .hdr {
+          padding: 28px 18px 20px;
+        }
+        .hero {
+          padding: 28px 18px;
         }
         .footer {
-          padding: 24px 20px;
+          padding: 20px 18px;
         }
         .status {
-          padding: 8px 20px;
+          padding: 8px 18px;
         }
-        .timeline-summary {
+        .tl-summary {
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
         }
-        .tl-divider {
+        .tl-div {
           display: none;
         }
       }
@@ -1174,7 +1459,6 @@
     <div class="terminal">
       <div class="load-bar"></div>
 
-      <!-- 系統列 -->
       <div class="sys-bar">
         <div class="sys-left">
           <div class="dot r"></div>
@@ -1190,13 +1474,13 @@
         <div class="hdr">
           <div class="hdr-ghost">QT</div>
           <div>
-            <div class="studio-tag">Web Design 網站建置服務</div>
+            <div class="studio-tag">Web Design 網站建置</div>
             <div class="studio-name">STUDIO<br /><span>D-SY Project</span></div>
           </div>
           <div class="doc-meta">
             <div class="doc-row">
               <span class="doc-key">DOC_ID</span
-              ><span class="doc-val">QT-2026-01</span>
+              ><span class="doc-val">QT-2025-001</span>
             </div>
             <div class="doc-row">
               <span class="doc-key">DATE</span
@@ -1219,13 +1503,12 @@
             // SERVICE_PROPOSAL.DOC &nbsp; INTERIOR_DESIGN_WEB
           </div>
           <h1>
-            <span class="m">風格設計</span><br />
-            <span class="c">網站建置</span><br />
-            <span class="l">服務報價單</span>
+            <span class="m">風格設計</span><br /><span class="c">網站建置</span
+            ><br /><span class="l">服務報價單</span>
           </h1>
           <p class="hero-desc">
-            提供兩種規格套案，涵蓋網站設計、CMS 後台建置、SEO 基礎設定與 GEO
-            優化（AI
+            提供兩種規格套案，涵蓋網站設計、前端開發、CMS 後台建置、SEO
+            基礎設定與 GEO 優化（AI
             搜尋引擎友善結構）。協助您的室內設計品牌建立高質感線上形象。
           </p>
         </div>
@@ -1237,7 +1520,6 @@
             ><span class="t">PLAN_SELECT // 方案選擇</span>
           </div>
           <div class="plans">
-            <!-- 基礎款 -->
             <div class="plan p1">
               <div class="plan-inner">
                 <div>
@@ -1270,7 +1552,6 @@
               </div>
             </div>
 
-            <!-- 標準款 -->
             <div class="plan p2">
               <div class="plan-inner">
                 <div>
@@ -1433,183 +1714,169 @@
           </div>
         </div>
 
-        <!-- ══ 工作流程（7 Phases）══ -->
+        <!-- 工作流程 -->
         <div class="flow-section">
           <div class="sec-label">
             <span class="n">03</span
             ><span class="t">WORKFLOW // 專案溝通與執行流程</span>
           </div>
 
-          <div class="flow-track">
-            <!-- Phase 1 -->
-            <div class="phase-row ph1">
-              <div class="phase-spine">
-                <div class="phase-node">01</div>
-                <div class="phase-line"></div>
-              </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_01</div>
-                  <div class="phase-duration">⏱ 1–2 DAYS</div>
-                </div>
-                <div class="phase-title">需求訪談與規劃</div>
-                <div class="phase-desc">
-                  收集目標市場、風格參考、功能需求（線上諮詢表、多語系、案例篩選），以及內容現況（文案與照片是否自備）。確認技術選型（WordPress
-                  或 Astro）與是否需要自製設計稿。
-                </div>
-              </div>
+          <div class="phase-row ph1">
+            <div class="phase-spine">
+              <div class="phase-node">01</div>
+              <div class="phase-line"></div>
             </div>
-
-            <!-- Phase 2 -->
-            <div class="phase-row ph2">
-              <div class="phase-spine">
-                <div class="phase-node">02</div>
-                <div class="phase-line"></div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_01</div>
+                <div class="phase-duration">⏱ 1–2 DAYS</div>
               </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_02</div>
-                  <div class="phase-duration">⏱ 3–5 DAYS</div>
-                </div>
-                <div class="phase-title">設計方向確認</div>
-                <div class="phase-desc">
-                  以 Relume 或 Framer 產出 2–3
-                  個視覺方向，涵蓋首頁、案例列表、案例內頁、關於、聯絡表單。客戶確認後才進入開發，避免後期大規模修改。
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 3 -->
-            <div class="phase-row ph3">
-              <div class="phase-spine">
-                <div class="phase-node">03</div>
-                <div class="phase-line"></div>
-              </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_03</div>
-                  <div class="phase-duration">⏱ 10–20 DAYS</div>
-                </div>
-                <div class="phase-title">網站開發</div>
-                <div class="phase-desc">
-                  建立頁面結構、整合設計稿、建立案例後台（WordPress CPT 或 Astro
-                  Content Collections）、表單整合（Formspree /
-                  EmailJS，避免安裝重量外掛）。
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 4 -->
-            <div class="phase-row ph4">
-              <div class="phase-spine">
-                <div class="phase-node">04</div>
-                <div class="phase-line"></div>
-              </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_04</div>
-                  <div class="phase-duration">⏱ 2–3 DAYS</div>
-                </div>
-                <div class="phase-title">SEO 基礎設定</div>
-                <div class="phase-desc">
-                  最常被接案者忽略卻最值錢的環節，完整執行以下清單：
-                </div>
-                <ul class="phase-list">
-                  <li>
-                    安裝 Rank Math（WordPress）或手動設定
-                    <code>&lt;meta&gt;</code> / Open Graph（Astro）
-                  </li>
-                  <li>設定 XML Sitemap 並提交 Google Search Console</li>
-                  <li>建立 <code>robots.txt</code></li>
-                  <li>
-                    加入 JSON-LD
-                    結構化資料（<code>LocalBusiness</code>、<code>Service</code>、<code>FAQPage</code>）
-                  </li>
-                  <li>
-                    設定 Google Analytics 4 + 事件追蹤（表單提交、電話點擊）
-                  </li>
-                  <li>圖片全部轉 WebP、設定 lazy loading 與 alt 文字</li>
-                  <li>設定 canonical URL，解決重複頁面問題</li>
-                  <li>啟用 Cloudflare 免費方案（CDN + 基礎 DDoS 防護）</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Phase 5 -->
-            <div class="phase-row ph5">
-              <div class="phase-spine">
-                <div class="phase-node">05</div>
-                <div class="phase-line"></div>
-              </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_05</div>
-                  <div class="phase-duration">⏱ 依客戶速度</div>
-                </div>
-                <div class="phase-title">內容上架</div>
-                <div class="phase-desc">協助客戶上稿或進行教學。</div>
-              </div>
-            </div>
-
-            <!-- Phase 6 -->
-            <div class="phase-row ph6">
-              <div class="phase-spine">
-                <div class="phase-node">06</div>
-                <div class="phase-line"></div>
-              </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_06</div>
-                  <div class="phase-duration">⏱ 2–3 DAYS</div>
-                </div>
-                <div class="phase-title">測試與優化</div>
-                <div class="phase-desc">
-                  PageSpeed Insights 驗證 Core Web Vitals 達標（LCP &lt;
-                  2.5s），進行跨瀏覽器測試、行動裝置測試、表單送出測試，確保上線品質穩定。
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 7 -->
-            <div class="phase-row ph7">
-              <div class="phase-spine">
-                <div class="phase-node">07</div>
-                <!-- 最後一個不顯示線 -->
-              </div>
-              <div class="phase-card">
-                <div class="phase-header">
-                  <div class="phase-tag">PHASE_07</div>
-                  <div class="phase-duration">⏱ 交付日</div>
-                </div>
-                <div class="phase-title">交付與維護合約</div>
-                <div class="phase-desc">
-                  完成操作教學、帳號移交、說明文件交付。視套案等級，評估是否簽訂後續維護合約（月費制）。
-                </div>
-                <div class="done-badge">
-                  ■ PROJECT_COMPLETE // HANDOFF_READY
-                </div>
+              <div class="phase-title">需求訪談與規劃</div>
+              <div class="phase-desc">
+                收集目標市場、風格參考、功能需求（線上諮詢表、多語系、案例篩選），以及內容現況（文案與照片是否自備）。確認技術選型（WordPress
+                或 Astro）與是否需要自製設計稿。
               </div>
             </div>
           </div>
-          <!-- /flow-track -->
 
-          <!-- 時間軸摘要 -->
-          <div class="timeline-summary">
+          <div class="phase-row ph2">
+            <div class="phase-spine">
+              <div class="phase-node">02</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_02</div>
+                <div class="phase-duration">⏱ 3–5 DAYS</div>
+              </div>
+              <div class="phase-title">設計方向確認</div>
+              <div class="phase-desc">
+                以 Relume 或 Framer 產出 2–3
+                個視覺方向，涵蓋首頁、案例列表、案例內頁、關於、聯絡表單。客戶確認後才進入開發，避免後期大規模修改。
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-row ph3">
+            <div class="phase-spine">
+              <div class="phase-node">03</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_03</div>
+                <div class="phase-duration">⏱ 10–20 DAYS</div>
+              </div>
+              <div class="phase-title">網站開發</div>
+              <div class="phase-desc">
+                建立頁面結構、整合設計稿、建立案例後台（WordPress CPT 或 Astro
+                Content Collections）、表單整合（Formspree /
+                EmailJS，避免安裝重量外掛）。
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-row ph4">
+            <div class="phase-spine">
+              <div class="phase-node">04</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_04</div>
+                <div class="phase-duration">⏱ 2–3 DAYS</div>
+              </div>
+              <div class="phase-title">SEO 基礎設定</div>
+              <div class="phase-desc">
+                最常被接案者忽略卻最值錢的環節，完整執行以下清單：
+              </div>
+              <ul class="phase-list">
+                <li>
+                  安裝 Rank Math（WordPress）或手動設定
+                  <code>&lt;meta&gt;</code> / Open Graph（Astro）
+                </li>
+                <li>設定 XML Sitemap 並提交 Google Search Console</li>
+                <li>建立 <code>robots.txt</code></li>
+                <li>
+                  加入 JSON-LD
+                  結構化資料（<code>LocalBusiness</code>、<code>Service</code>、<code>FAQPage</code>）
+                </li>
+                <li>
+                  設定 Google Analytics 4 + 事件追蹤（表單提交、電話點擊）
+                </li>
+                <li>圖片全部轉 WebP、設定 lazy loading 與 alt 文字</li>
+                <li>設定 canonical URL，解決重複頁面問題</li>
+                <li>啟用 Cloudflare 免費方案（CDN + 基礎 DDoS 防護）</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="phase-row ph5">
+            <div class="phase-spine">
+              <div class="phase-node">05</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_05</div>
+                <div class="phase-duration">⏱ 依客戶速度</div>
+              </div>
+              <div class="phase-title">內容上架</div>
+              <div class="phase-desc">協助客戶上稿或進行教學。</div>
+            </div>
+          </div>
+
+          <div class="phase-row ph6">
+            <div class="phase-spine">
+              <div class="phase-node">06</div>
+              <div class="phase-line"></div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_06</div>
+                <div class="phase-duration">⏱ 2–3 DAYS</div>
+              </div>
+              <div class="phase-title">測試與優化</div>
+              <div class="phase-desc">
+                PageSpeed Insights 驗證 Core Web Vitals 達標（LCP &lt;
+                2.5s），進行跨瀏覽器測試、行動裝置測試、表單送出測試，確保上線品質穩定。
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-row ph7">
+            <div class="phase-spine">
+              <div class="phase-node">07</div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-header">
+                <div class="phase-tag">PHASE_07</div>
+                <div class="phase-duration">⏱ 交付日</div>
+              </div>
+              <div class="phase-title">交付與維護合約</div>
+              <div class="phase-desc">
+                完成操作教學、帳號移交、說明文件交付。視套案等級，評估是否簽訂後續維護合約（月費制）。
+              </div>
+              <div class="done-badge">■ PROJECT_COMPLETE // HANDOFF_READY</div>
+            </div>
+          </div>
+
+          <div class="tl-summary">
             <div class="tl-item">
               <div class="tl-label">TOTAL_PHASES</div>
               <div class="tl-val">07 STEPS</div>
             </div>
-            <div class="tl-divider"></div>
+            <div class="tl-div"></div>
             <div class="tl-item">
               <div class="tl-label">基礎款 ETA</div>
               <div class="tl-val" style="color: var(--cyan)">3–4 WEEKS</div>
             </div>
-            <div class="tl-divider"></div>
+            <div class="tl-div"></div>
             <div class="tl-item">
               <div class="tl-label">標準款 ETA</div>
               <div class="tl-val" style="color: var(--lime)">5–8 WEEKS</div>
             </div>
-            <div class="tl-divider"></div>
+            <div class="tl-div"></div>
             <div class="tl-item">
               <div class="tl-label">PAYMENT</div>
               <div
@@ -1626,7 +1893,6 @@
             </div>
           </div>
         </div>
-        <!-- /flow-section -->
 
         <!-- 備註 -->
         <div class="sec">
@@ -1654,7 +1920,7 @@
                 頁面數量、語系數量、功能複雜度為影響最終報價的主要變數，超出套案範圍依實際工時另計。
               </li>
               <li>
-                付款方式：簽約時付 25%，設計稿確認後付 25%，網站上線後付尾款
+                付款方式：簽約時付 50%，設計稿確認後付 25%，網站上線後付尾款
                 25%。
               </li>
               <li>本報價單有效期限為報價日起 30 天，逾期須重新估算。</li>
@@ -1699,10 +1965,9 @@
     </div>
 
     <script>
-      // 即時時鐘
       function tick() {
-        const n = new Date();
-        const p = (v) => String(v).padStart(2, "0");
+        const n = new Date(),
+          p = (v) => String(v).padStart(2, "0");
         const el = document.getElementById("clock");
         if (el)
           el.textContent = `${p(n.getHours())}:${p(n.getMinutes())}:${p(
@@ -1711,14 +1976,12 @@
       }
       tick();
       setInterval(tick, 1000);
-
-      // 日期
       const fmt = (d) => {
         const p = (v) => String(v).padStart(2, "0");
         return `${d.getFullYear()}.${p(d.getMonth() + 1)}.${p(d.getDate())}`;
       };
-      const now = new Date();
-      const exp = new Date(now);
+      const now = new Date(),
+        exp = new Date(now);
       exp.setDate(exp.getDate() + 30);
       document.getElementById("today").textContent = fmt(now);
       document.getElementById("expire").textContent = fmt(exp);
